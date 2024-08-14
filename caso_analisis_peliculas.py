@@ -45,3 +45,12 @@ plt.show()
 plt.figure(figsize=(10,6))
 plt.pie(df_1["Gross"].head(10), labels=df_1["Film"].head(10), autopct="%0.2f%%")
 plt.show()
+
+#Media de ingresos
+df_2 = dataframe.groupby("Month")["Gross"].mean()
+plt.figure(figsize=(10,6))
+plt.plot(df_2)
+plt.title("Media de ingresos por mes")
+plt.ylabel("Mes")
+plt.xlabel("Ingresos")
+plt.show()
