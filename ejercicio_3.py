@@ -23,4 +23,4 @@ df["Minutos"][(df["Minutos"].isnull()) & (df["Alimentos"] == 2)] = \
 df["Minutos"][(df["Minutos"].isnull()) & (df["Alimentos"] == 3)] = \
     df["Cantidad"][df["Alimentos"] == 3] * 6
 
-df.to_csv("dataset_creado.csv", index=False)
+df.to_csv("datasets/dataset_creado.csv", index=False)
