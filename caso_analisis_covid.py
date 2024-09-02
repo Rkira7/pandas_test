@@ -30,4 +30,20 @@ df.isna().sum().sum()/len(df)
 df.dropna(inplace=True)
 
 #Crear Dataframe muertos por pais 
-df_por_pais = df.groupby("pais")[["casos"]["muertes"]].sum()
+df_por_pais = df.groupby("pais")[["casos", "muertes"]].sum()
+df_por_pais["relacion_mortalidad"] = df_por_pais["muertes"]/df_por_pais["casos"]
+
+datos = df_por_pais["relacion_mortalidad"].sort_values(ascending=False).head(15)
+plt.figure(figsize=(15, 10))
+plt.bar(datos.index, datos)
+plt.title("Top 15 con las mayots tasas de mortalidad")
+plt.xlabel("Pais")
+plt.ylabel("Casos de mortlidad")
+plt.xticks(rotation = 15)
+plt.show()
+
+
+datos2 = df_por_pais["casos"].sort_values(ascending=False).head(10)
+plt.figure(figsize=(10,10))
+plt.pie(datos2, labels=datos2.index, autopct="%.2f%%")
+plt.show()
