@@ -47,3 +47,12 @@ datos2 = df_por_pais["casos"].sort_values(ascending=False).head(10)
 plt.figure(figsize=(10,10))
 plt.pie(datos2, labels=datos2.index, autopct="%.2f%%")
 plt.show()
+
+datos3 = df_por_pais.muertes.sort_values(ascending=False).head(10)
+plt.figure(figsize=(15, 10))
+plt.bar(datos3.index, datos3)
+plt.title("Top 10 paises con mayores muertes por COVID-19 durante el 2020")
+plt.xlabel("Paises")
+plt.ylabel("Muertes")
+plt.xticks(rotation=15)
+plt.show
