@@ -56,3 +56,20 @@ plt.xlabel("Paises")
 plt.ylabel("Muertes")
 plt.xticks(rotation=15)
 plt.show
+
+df_por_meses = df.groupby("mes")[["casos", "muertes"]].sum()
+
+figura = plt.figure(figsize=(12,12))
+grafica1 = figura.add_subplot(1,2,1)
+grafica2 = figura.add_subplot(1,2,2)
+
+grafica1.plot(df_por_meses.casos)
+grafica1.set_title("Total de casos mensuales de COVID-19 2020")
+grafica1.set_xlabel("Mes")
+grafica1.set_ylabel("Cantidad casos por mes")
+
+grafica2.plot(df_por_meses.muertes)
+grafica2.set_title("Total de muertes mensuales de COVID-19 2020")
+grafica2.set_xlabel("Muertes")
+grafica2.set_ylabel("Cantidad muertes por mes")
+plt.show()
